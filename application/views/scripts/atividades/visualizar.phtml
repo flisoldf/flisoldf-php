@@ -1,0 +1,40 @@
+<ul id="menu">
+	<li>
+		<a href="javascript:history.back();">Voltar</a>
+	</li>
+	<li>
+		<a onclick="javascript: window.open('<?php echo $this->baseUrl();?>/atividades/imprimir/id/<?php echo $this->id;?>','impressao' )" href="javascript:return false;">Imprimir</a>
+	</li>
+</ul>
+<p style="clear:both; padding-top:20px;">
+<h2 style="padding-left:25px">Atividade</h2>
+<table width="95%" align="center" cellpadding="10">
+	<tr>
+		<td bgcolor="#E6E6E6" width="20%">Responsável:</td>
+		<td bgcolor="#F4F4F4" width="80%"><strong><?php echo $this->palestrante['nome']; ?></strong></td>
+	</tr>
+	<tr>
+		<td bgcolor="#E6E6E6" >Nome da atividade:</td>
+		<td bgcolor="#F4F4F4"><?php echo $this->row->nome; ?></td>
+	</tr>
+	<tr>
+		<td bgcolor="#E6E6E6" >Descrição da atividade:</td>
+		<td bgcolor="#F4F4F4"><?php echo $this->row->descricao; ?></td>
+	</tr>
+	<tr>
+		<td bgcolor="#E6E6E6" >Quantidade de horas: *</td>
+		<td bgcolor="#F4F4F4"><?php echo $this->row->qt_horas; ?></td>
+	</tr>
+	<?php if(Zend_Auth::getInstance()->getIdentity()->sRole == 'admin'){?>			
+		<tr>
+			<td bgcolor="#E6E6E6" >Grade de Participantes: </td>
+			<td bgcolor="#F4F4F4">
+				<?php echo $this->partial( 'participantes/partial-listagem.phtml', array( 
+																						'participantes' => $this->participantes,
+																						'id_atividade'	=> $this->row->id, 
+																						'participantesPresentes'	=> $this->participantePresente)); ?>
+			</td>
+		</tr>			
+	<?php }?>
+</table>
+</p>

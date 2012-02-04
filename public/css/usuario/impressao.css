@@ -1,0 +1,32 @@
+@CHARSET "UTF-8";
+
+*{
+	font-size: 12px;
+}
+
+
+table{
+	border-spacing: 0;
+	border: 1px solid black;
+	width: 100%;
+}
+
+table td{
+	border: 1px solid black;
+	height: 25px;
+}
+
+table th{
+	height: 25px;
+	text-align: left;
+	border: 1px solid black;
+}
+#nome{
+	width: 250px;
+}
+
+#email{
+	width: 250px;
+}
+
+

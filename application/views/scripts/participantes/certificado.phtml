@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>FLISOL-DF 2010</title>
+</head>
+<style>
+body{
+    padding:0px;
+    margin:0px;
+}
+div#certificado{
+    margin:0 auto;
+    border:#FF0000 solid 0px;
+    text-align:center;
+}
+div#certificado img{
+    border:#00F solid 0px;
+}
+#texto{
+    position:absolute;
+    top:350px;
+    left:50%;
+    width:900px;
+    margin-left:-450px;
+    font-size:28px;
+    text-align:center;
+    border:#900 solid 0px;
+}
+</style>
+<body>
+
+<div id="texto">
+    Certificamos que <strong><?php echo $this->participante->nome; ?></strong><br />
+    participou da atividade <b><?php echo $this->atividade->nome; ?></b><br />
+    (FLISOL-DF), realizado pela Faculdade Jesus Maria José - FAJESU,<br />
+    no dia 24 de abril de 2010, com carga horária de <?php echo substr($this->atividade->qt_horas, 0, 5); ?> hora(s).
+</div>
+
+<div id="certificado">
+<img src="<?php echo $this->baseUrl(); ?>/imgs//bg_certificado.jpg" width="1080" height="784 /">
+</div>
+
+</body>
+</html>

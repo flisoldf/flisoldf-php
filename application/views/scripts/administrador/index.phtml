@@ -1,0 +1,35 @@
+<div id="menu_area">
+	<ul id="menu">
+		<li><a href="<?php echo $this->baseUrl();?>/administrador/listagem/tipo/participante">Participantes</a></li>
+		<li><a href="<?php echo $this->baseUrl();?>/administrador/listagem/tipo/palestrante">Palestrantes</a></li>
+		<li><a href="<?php echo $this->baseUrl();?>/salas">Salas</a></li>
+	</ul>
+	
+	<div id="total">
+		Total de usuários cadastrados: <b><?php echo $this->qtUsuarios; ?></b>
+	</div>
+	<div id="total">
+		Total de inscrições realizadas: <b><?php echo $this->qtInscricoes; ?></b>
+	</div>
+
+</div>
+
+<div style="padding-top:30px;">
+	<h2 style="padding-left:25px">Atividades Inscritas</h2>
+	<?php echo $this->partial( 'atividades/partial-listagem.phtml', array( 'atividades' => $this->atividadesInscrito, 'listagemAtividadesInscritas'	=>	true)); ?>
+</div>
+
+<div style="padding-top:30px;">
+	<h2 style="padding-left:25px">Atividades Submetidas</h2>
+	<?php echo $this->partial( 'atividades/partial-listagem.phtml', array( 'atividades' => $this->atividadesSubmetidas)); ?>
+</div>
+
+<div style="padding-top:30px;">
+	<h2 style="padding-left:25px">Atividades Aprovadas</h2>
+	<?php echo $this->partial( 'atividades/partial-listagem.phtml', array( 'atividades' => $this->atividades, 'vagasOcupadas' => $this->vagasOcupadas)); ?>
+</div>
+
+<div style="padding-top:30px;">
+	<h2 style="padding-left:25px">Atividades Rejeitadas</h2>
+	<?php echo $this->partial( 'atividades/partial-listagem.phtml', array( 'atividades' => $this->atividadesRejeitadas)); ?>
+</div>

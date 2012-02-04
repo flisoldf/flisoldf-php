@@ -1,0 +1,25 @@
+<div class="w50" style="padding:30px;">
+<p>
+	<strong>Festival Latino Americano de Instalação de Software Livre</strong>
+</p>
+
+</div>
+
+<div class="w30">
+	<form name="form1" method="post" action="<?php echo $this->baseUrl(); ?>/participantes/recuperar-senha">
+		<fieldset><legend>Login</legend>
+			<h2>Recuperar senha:</h2>
+			<p>E-mail:<br />
+			<input type="text" name="email" class="email" /></p>
+			<p><input type="submit" value="ENVIAR" /></p>
+		</fieldset>
+	</form>
+</div>
+<script type="text/javascript">
+$(function(){
+	//validação
+	$("form").validate({
+		ignoreTitle: true
+	});
+});
+</script>

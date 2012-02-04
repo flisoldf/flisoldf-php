@@ -1,0 +1,4 @@
+Na inscrição adicionar o campo para hora de inicio e fim da atividade
+Adicionar opção do usuário desfazer sua inscrição
+Não permitir mais de uma atividade por data na mesma sala
+Enviar email para o usuário quando ele se cadastrar

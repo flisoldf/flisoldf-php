@@ -1,0 +1,38 @@
+<ul id="menu">
+    <li><a href="javascript:history.back();">Voltar</a></li>
+</ul>
+<hr />
+<br />
+<form action="<?php echo $this->baseUrl(); ?>/administrador/gravar-colaborador" method="post">
+<input type="submit" value="Gravar">
+    <table border="0" align="center" width="95%" cellspacing="2" cellpadding="5">
+        <tr>
+            <th align="left">Colaborador</th>
+            <th align="left">Nome</th>
+            <th align="left">Email</th>
+        </tr>
+        <?php
+        $i = 0;
+        $usuarios = $this->usuarios;
+        foreach ($usuarios as $row) {
+            if ($i++ % 2) {
+                $trCor = "#F4F4F4";
+            } else {
+                $trCor = '#DFDFDF';
+            }
+            if ($row->colaborador == Usuario::COLABORADOR) {
+                $checked = ' checked="checked" ';
+            } else {
+                $checked = '';
+            }
+            ?>
+            <tr style="background-color:<?php echo $trCor;?>">
+                <td align="left">
+                    <input type="checkbox" name="colaborador[]" value="<?php echo $row->id; ?>" <?php echo $checked;?>>
+                </td>
+                <td align="left"><?php echo $row->nome ?></td>
+                <td align="left"><?php echo $row->email ?></td>
+            </tr>
+        <?php } ?>
+    </table>
+</form>

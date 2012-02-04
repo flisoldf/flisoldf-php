@@ -1,0 +1,26 @@
+<?php foreach($this->atividades as $atividade):?>
+<div class="float_info" style="border:#CCC solid 1px; margin-left:20px; padding:10px;" id="info_atividade_<?php echo $atividade['id'] ?>">
+    <div>
+        <div class="small_info">
+            <h2><?php echo $atividade['nome'] ?></h2>
+            Horário: <?php //echo date('H:s',$atividade['dt_cadastro']).'hs' ?><br>
+            Sala: <?php echo $atividade['nome_sala'] ?>
+        </div>
+    </div>
+    
+    <div class="descricao_info">
+        <h4>Palestrante</h4>
+        <?php echo $atividade['nome_usuario'] ?>
+    </div>
+    
+    <div class="descricao_info">
+        <h4>Descrição</h4>
+        <?php echo $atividade['descricao'] ?>
+    </div>
+	
+    <div class="descricao_info" align="right">
+        <input type="submit" style="cursor:pointer;" value="Quero me inscrever" id="button_<?php echo $atividade['id'] ?>"/>
+    </div>
+</div>
+
+<?php endforeach; ?>

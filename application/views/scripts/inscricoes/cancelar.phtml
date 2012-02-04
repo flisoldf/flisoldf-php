@@ -1,0 +1,14 @@
+<div>
+	<form action="<?php echo $this->baseUrl(); ?>/inscricoes/cancelar" method="post" name="frmCancelarInscricao" id="frmCancelarInscricao">
+		<fieldset>
+			<legend>Cancelamento de Inscrição</legend>
+			
+			 <p>Deseja realmente cancelar a inscrição do usuário "<strong><?php echo $this->nomeUsuario;?></strong>" para a atividade "<strong>
+			 <?php echo $this->nomeAtividade?></strong>" ?</p>
+			 <p>
+			 	<input type="submit" name="btnCancelarInscricao" id="btnCancelarInscricao" value="Cancelar Inscrição" />
+			 	<input type="hidden" name="atividade_id" id="atividade_id" value="<?php echo $this->atividade_id;?>" />
+			 </p> 
+		</fieldset>
+	</form>
+</div>

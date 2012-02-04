@@ -1,0 +1,39 @@
+<!-- 
+Autor: Daniel Maffioletti
+Email: dmaffioletti@gmail.com
+Fone: (61)9151-4622
+ -->
+<div class="w50" style="padding:30px;">
+<p>
+	<strong>Festival Latino Americano de Instalação de Software Livre</strong>
+</p>
+
+<p>
+	Por favor, informe o seu usuário/email e sua senha para acessar o sistema de inscrição do FLISOL.<br />
+	Se você ainda não te acesso <a href="<?php echo $this->baseUrl(); ?>/participantes">cadastre-se aqui</a>
+</p>
+<p>
+	Esqueceu o seu usuário ou a senha de acesso? Clique <a href="<?php echo $this->baseUrl(); ?>/participantes/recuperar-senha">recuperar minha senha.</a>
+</p>
+</div>
+
+<div class="w30">
+	<form name="form1" method="post" action="<?php echo $this->baseUrl(); ?>/participantes/login">
+		<fieldset><legend>Login</legend>
+			<h2>Autenticação</h2>
+			<p>E-mail:<br />
+			<input type="text" name="email" class="email" /></p>
+			<p>Senha:<br />
+			<input type="password" name="senha" /></p>
+			<p><input type="submit" value="ACESSAR" /></p>
+		</fieldset>
+	</form>
+</div>
+<script type="text/javascript">
+$(function(){
+	//validação
+	$("form").validate({
+		ignoreTitle: true
+	});
+});
+</script>
