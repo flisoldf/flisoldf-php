@@ -1,0 +1,60 @@
+<ul id="menu">
+	<li>
+		<a href="<?php echo $this->baseUrl(); ?>/atividades/formulario">Submeter proposta de trabalho</a>
+	</li>
+	<li>
+		<a href="javascript:history.back();">Voltar</a>
+	</li>
+	<hr />
+</ul>
+
+<br />
+
+<div class="atividades">
+    <?php foreach($this->atividades as $atividade): 
+    $qtInscricoes = isset($this->countAtividades[$atividade['id']]) ? $this->countAtividades[$atividade['id']] : 0;
+    ?>
+
+    <div class="lista_atividade" style="margin-left:10px;"  id="<?php echo "atividade_".$atividade['id']?>">
+        <div class="titulo_atividade" >
+                <?php echo $atividade['nome'] ?>
+            <span>
+                    <?php //echo date('H:i',$atividade['dt_cadastro']) ?>
+            </span>
+        </div>
+        <div class="palestrante_atividade"><b><?php echo $atividade['nome_usuario']?></b></div>
+        <span>Vagas: <?php echo $qtInscricoes; ?>/<?php echo $atividade['qt_vagas']; ?> </span>
+    </div>
+
+    <?php endforeach; ?>
+</div>
+<?php echo $this->partial('inscricoes/info_atividade.phtml', array('atividades' => $this->atividades)); ?>
+
+<script>
+    $(document).ready(function(){
+        $(".lista_atividade")
+        .mouseover(function(){
+            $(this).css("background","#f90");
+        })
+        .mouseout(function(){
+            $(this).css("background","#fff");
+        })
+        .click(function(){
+            showInfo($(this).attr("id"));
+        })
+        $("input:submit").click(function(){
+            var id = $(this).attr("id").split("_")[1];
+            cadastraInscricao(id,this)
+        });
+    })
+    function showInfo(id){
+        $(".float_info").hide();
+        $("#info_"+id).show();
+    }
+    function cadastraInscricao(id,field){
+        var url = "<?php echo $this->baseUrl() ?>/inscricoes/cadastra";
+        $.post(url,{id_atividade:id},function(data){
+            alert(data);
+        })
+    }
+</script>

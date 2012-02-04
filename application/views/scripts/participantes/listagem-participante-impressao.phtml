@@ -1,0 +1,33 @@
+<?php echo $this->headLink()->appendStylesheet( $this->baseUrl() . '/css/usuario/impressao.css','print');?>
+<p>Atividade: <?php echo $this->row->nome;?></p>
+<p>Sala: <?php echo $this->sala->nome;?></p>
+<p>Palestrante: <?php echo $this->palestrante['nome'];?></p>
+<table border="1" align="left" width="95%" cellspacing="2" cellpadding="5">
+	<thead>
+		<tr>
+			<th id="nome" width="300px;">Nome</th>
+			<th id="email" width="200px;">E-mail</th>
+			<th id="assinatura">Assinatura</th>
+		</tr>
+	</thead>
+	
+	<?php 
+	$participantes	= $this->participantes;
+	if($participantes->count() > 0){
+		foreach($participantes as $participante) {?>
+		    <tr>
+				<td><?php echo $participante->nome ?></td>
+				<td><?php echo $participante->email ?></td>
+				<td>&nbsp;</td>
+			</tr>
+		<?php } 
+		
+	}else{?>
+		<tr>
+			<td colspan="2">Nenhum participante inscrito</td>
+		</tr>
+	<?php }?>
+</table>
+<script type="text/javascript" language="javascript">
+	window.print();
+</script>

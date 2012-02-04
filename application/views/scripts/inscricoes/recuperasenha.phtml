@@ -1,0 +1,17 @@
+<?php
+// Recuperarsenha.php
+/**
+ *Lenon/Marcos 11-03-2010*/
+ ?>
+
+<div id="divFormulario">
+	<form action="<?php echo $this->baseUrl() ?>/inscricoes/verificaemail" method="post" name="formulario" id="formulario">
+		<?php echo $this->msg;?>
+        <div>
+            <label for="nome">Digite seu email: </label><br />
+            <input  type="text" name="email" id="email" value="<?php echo $this->sala->nome; ?>" title="Nome"  maxlength="45" />
+        </div>
+		
+		<input type="submit" name="enviar" id="enviar" value="Gravar" />
+	</form>
+</div>

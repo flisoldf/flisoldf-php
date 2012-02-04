@@ -1,0 +1,44 @@
+<ul id="menu">
+	<li>
+		<a href="<?php echo $this->baseUrl(); ?>/salas/formulario">Inserir Novo Registro</a>
+	</li>
+	<li>
+		<a href="javascript:history.back();">Voltar</a>
+	</li>
+	<hr />
+</ul>
+
+<div id="listagem" class="clear">
+<br />
+<table width="95%" cellpadding="5" align="center">
+	<tr>
+		<th width="50%" align="left">Nome</th>
+		<th width="25%" align="center">Bloco</th>
+		<th width="25%" align="center">Quantidade de pessoas</th>
+	</tr>
+<?php
+$cor = true;
+foreach($this->salas as $sala){
+	
+	if( $cor == true )
+	{
+		$tdcor = "#DFDFDF";
+		$cor = false;
+	}
+	else
+	{
+		$tdcor = "#F4F4F4";
+		$cor = true;
+	}
+	
+    echo '
+    	<tr>
+    		<td bgcolor="'. $tdcor .'"><a href="' . $this->baseUrl() . '/salas/formulario/id/' . $sala->id . '">' . $sala->nome . '</a></td>
+    		<td bgcolor="'. $tdcor .'" align="center">' . $sala->bloco . '</td>
+    		<td bgcolor="'. $tdcor .'" align="center">' . $sala->qt_pessoas . '</td>
+    	</tr>
+    ';
+}
+?>
+</table>
+</div>

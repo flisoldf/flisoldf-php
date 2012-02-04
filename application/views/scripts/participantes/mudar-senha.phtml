@@ -1,0 +1,28 @@
+<div class="w50" style="padding:30px;">
+<p>
+    <strong>Festival Latino Americano de Instalação de Software Livre</strong>
+</p>
+
+</div>
+
+<div class="w30">
+    <form name="form1" method="post" action="<?php echo $this->baseUrl(); ?>/participantes/mudar-senha">
+        <fieldset><legend>Login</legend>
+            <input type="hidden" name="hash" value="<?php echo $this->hash?>" />
+            <h2>Mudar senha:</h2>
+            <p>Senha:<br />
+            <input type="password" name="senha" class="senha" /></p>
+            <p>Confirmação de senha:<br />
+            <input type="password" name="senha-confirmacao" class="senha" /></p>
+            <p><input type="submit" value="ENVIAR" /></p>
+        </fieldset>
+    </form>
+</div>
+<script type="text/javascript">
+$(function(){
+    //validação
+    $("form").validate({
+        ignoreTitle: true
+    });
+});
+</script>

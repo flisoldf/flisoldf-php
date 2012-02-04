@@ -1,0 +1,18 @@
+	<script type="text/javascript" language="javascript">
+		$(document).ready(function(){
+			$('#email').ckeditor(
+					{
+						toolbar : 'Basic'
+	    			}
+	    	);	
+			
+		});
+	</script>
+
+	<form name="frmEnvioEmail" id="frmEnvioEmail" action="<?php echo $this->baseUrl(); ?>/administrador/email" method="post">
+		<label>Para: <textarea rows="1" cols="30" id="destinatario" name="destinatario"></textarea> </label>		
+		<label>Assunto: <input type="text" name="assunto" id="assunto" value="" /> </label>		
+		<label>E-mail: <textarea rows="10" cols="30" id="email" name="email"></textarea> </label>
+		<br />		
+		<input type="submit" name="btnSubmit" id="btnSubmit" value="Enviar e-mail" />
+	</form>

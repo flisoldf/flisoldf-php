@@ -1,0 +1,63 @@
+	<table border="0" align="center" width="95%" cellspacing="2" cellpadding="5">
+	<tr>
+		<th align="left">Nome</th>
+		<th align="center">Carga Horária</th>
+		<th align="center">Situação</th>
+		<th align="center">Vagas</th>
+		<th align="center">Ações</th>
+	</tr>
+	<?php 
+	$cor = true;
+	$atividadesSubmetidas = $this->atividades;
+	$vagasOcupadas        = $this->vagasOcupadas;
+	foreach($atividadesSubmetidas as $atividade) {
+	    // Vagas
+	    $sVagas = '';
+	    if(isset($vagasOcupadas[$atividade->id])) {
+	        $sVagas = $vagasOcupadas[$atividade->id] . '/'; 
+	    }
+	    $sVagas .= isset($atividade->qt_vagas) ? $atividade->qt_vagas : 0;
+	    
+	    switch ($atividade->situacao)
+	    {
+	        case Atividade::SUBMETIDO : $situacao = 'aguardando aprovação'; break;
+	        case Atividade::APROVADO  : $situacao = 'aprovado'; break;
+	        case Atividade::REJEITADO : $situacao = 'rejeitado'; break;
+	    }
+		if( $cor == true )
+		{
+			$tdcor = "#DFDFDF";
+			$cor = false;
+		}
+		else
+		{
+			$tdcor = "#F4F4F4";
+			$cor = true;
+		}
+	    ?>
+	    <tr>
+			
+			<td width="45%" style="background-color:<?php echo $tdcor;?>"><?php echo $atividade->nome ?></td>
+			<td width="15%" style="background-color:<?php echo $tdcor;?>" align="center"><?php echo $atividade->qt_horas ?></td>
+			<td width="15%" style="background-color:<?php echo $tdcor;?>" align="center"><?php echo $situacao; ?></td>
+			<td width="10%" style="background-color:<?php echo $tdcor;?>" align="center"><?php echo $sVagas; ?></td>
+			<td width="15%" style="background-color:<?php echo $tdcor;?>" align="center">
+				<?php if ((Zend_Auth::getInstance()->getIdentity()->id == $atividade->id_palestrante) || (Zend_Auth::getInstance()->getIdentity()->sRole == 'admin')) { ?>
+				<a href="<?php echo $this->baseUrl(); ?>/atividades/formulario/id/<?php echo $atividade->id ?>">
+					<img alt="Editar" title="Editar" src="<?php echo $this->baseUrl(); ?>/imgs/icones/editar.png" border="0px">
+				</a>
+				<?php } ?>
+				&nbsp;
+				<a href="<?php echo $this->baseUrl(); ?>/atividades/visualizar/id/<?php echo $atividade->id ?>">
+					<img alt="Visualizar" title="Visualizar" src="<?php echo $this->baseUrl(); ?>/imgs/icones/visualizar.png" border="0px">
+				</a>
+				&nbsp;
+				<?php if($this->listagemAtividadesInscritas === true){?>
+				<a href="<?php echo $this->baseUrl(); ?>/inscricoes/cancelar/atividade_id/<?php echo $atividade->id ?>">
+					<img alt="Cancelar Inscrição" title="Cancelar Inscrição" src="<?php echo $this->baseUrl(); ?>/imgs/icones/excluir.png" border="0px">
+				</a>
+				<?php }?>
+			</td>
+		</tr>
+	<?php } ?>
+</table>
