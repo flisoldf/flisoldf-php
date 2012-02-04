@@ -1,0 +1,56 @@
+<div>
+<h2 style="padding-left:25px">Atividades que você participou</h2>
+<?php
+if ($this->colaborador == Usuario::COLABORADOR) { ?>
+    <table border="0" align="center" width="95%" cellspacing="2" cellpadding="5">
+        <tr>
+             <th align="left">Atividade</th>
+             <th align="center">Carga Horária</th>
+             <th align="center">Ações</th>
+        </tr>
+        <tr>
+            <td width="45%">Colaboração no FLISOL DF 2010</td>
+            <td width="15%" align="center">20</td>
+            <td width="15%" align="center">
+                <a target="_blank" href="<?php echo $this->baseUrl(); ?>/participantes/certificado-colaborador/tipo/html">
+                    <img alt="Certificado" title="Certificado" src="<?php echo $this->baseUrl(); ?>/imgs/icones/visualizar.png" border="0px" width="16px" height="16px" />
+                </a>
+                <a target="_blank" href="<?php echo $this->baseUrl(); ?>/participantes/certificado-colaborador/tipo/pdf">
+                    <img alt="Certificado" title="Certificado" src="<?php echo $this->baseUrl(); ?>/imgs/icones/pdf.jpg" border="0px" width="16px" height="16px" />
+                </a>
+            </td>
+        </tr>
+    </table>
+<?php
+}
+if(!empty($this->atividades) && count($this->atividades)) { ?>
+    <table border="0" align="center" width="95%" cellspacing="2" cellpadding="5">
+    <tr>
+        <th align="left">Atividade</th>
+        <th align="center">Carga Horária</th>
+        <th align="center">Ações</th>
+    </tr>
+        <?php
+        $cor = true;
+        $atividades = $this->atividades;
+        $tdcor = '';
+        foreach($atividades as $atividade) { ?>
+            <tr>
+                <td width="45%" style="background-color:<?php echo $tdcor;?>"><?php echo $atividade->nome ?></td>
+                <td width="15%" style="background-color:<?php echo $tdcor;?>" align="center"><?php echo $atividade->qt_horas ?></td>
+                <td width="15%" style="background-color:<?php echo $tdcor;?>" align="center">
+                    <a target="_blank" href="<?php echo $this->baseUrl(); ?>/participantes/certificado/id_atividade/<?php echo $atividade->id ?>/tipo/html">
+                        <img alt="Certificado" title="Certificado" src="<?php echo $this->baseUrl(); ?>/imgs/icones/visualizar.png" border="0px" width="16px" height="16px" />
+                    </a>
+                    <a target="_blank" href="<?php echo $this->baseUrl(); ?>/participantes/certificado/id_atividade/<?php echo $atividade->id ?>/tipo/pdf">
+                        <img alt="Certificado" title="Certificado" src="<?php echo $this->baseUrl(); ?>/imgs/icones/pdf.jpg" border="0px" width="16px" height="16px" />
+                    </a>
+                </td>
+            </tr>
+        <?php } ?>
+    </table>
+
+<?php } else { ?>
+<b>Você não participou de nenhuma atividade.</b>
+<?php } ?>
+</div>

@@ -1,0 +1,32 @@
+<ul id="menu">
+	<li><a href="javascript:history.back();">Voltar</a></li>
+	<hr />
+</ul>
+<br />
+<table border="0" align="center" width="95%" cellspacing="2" cellpadding="5">
+	<tr>
+		<th align="left">Nome</th>
+		<th align="left">Email</th>
+	</tr>
+	<?php 
+	$cor = true;
+	$usuarios = $this->usuarios;
+	foreach($usuarios as $row) {
+		if( $cor == true )
+		{
+			$tdcor = "#DFDFDF";
+			$cor = false;
+		}
+		else
+		{
+			$tdcor = "#F4F4F4";
+			$cor = true;
+		}
+	    ?>
+	    <tr>
+			
+			<td style="background-color:<?php echo $tdcor;?>" align="left"><?php echo $row->nome ?></td>
+			<td style="background-color:<?php echo $tdcor;?>" align="left"><?php echo $row->email ?></td>
+		</tr>
+	<?php } ?>
+</table>

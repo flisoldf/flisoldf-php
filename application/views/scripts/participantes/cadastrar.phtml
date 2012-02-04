@@ -1,0 +1,124 @@
+<div class="w50" style="color:#333;padding-left:20px;">
+	
+	<div class="w50">
+	<br />
+	<h2>Autenticação</h2>
+		<form name="form1" method="post" action="<?php echo $this->baseUrl(); ?>/participantes/login">
+			<fieldset><legend>Login</legend>
+				<p>E-mail:<br />
+				<input type="text" name="email" class="email" /></p>
+				<p>Senha:<br />
+				<input type="password" name="senha" /></p>
+				<p><input type="submit" value="ACESSAR" /></p>
+			</fieldset>
+		</form>
+	</div>
+	
+	<div style="clear:both;padding-top:20px;">
+	<h2>
+	O que é FLISOL?
+	</h2>
+	<p>
+	<strong>O Festival Latino americano de Instalação de Software Livre (FLISOL)</strong> é um festival anual de
+	instalação de software livre, gratuito e aberto a toda a comunidade, realizado desde 2005 em 
+	diversos países da américa latina, inclusive no Brasil.
+	</p>
+	
+	<p>
+	O evento tem o propósito de promover o uso de softwares livres e a integração de comunidades 
+	de usuários de software livre em todos os paí ses da América Latina.
+	</p>
+	
+	<p>
+	A capital Federal
+	(Brasília) entrará nessa maratona pela 5ª vez. Ele ocorrerá no dia 24 de Abril de 2010 na
+	Faculdade Jesus Maria José (FAJESU – QNG 46 – Taguatinga Norte), às 09:00 horas da manhã e
+	tem término previsto para às  17:00 horas, com a solenidade de encerramento.
+	</p>
+	
+	<p>
+	A aplicação de controle de inscrições esta sendo desenvolvida colobarativamente em parceria como o <a href="http://www.phpdf.org.br/">PHPDF</a>,
+	estamos trabalhando nela para que seja útil para o evento.<br/>
+	O código esta disponivel em <a href="http://code.google.com/p/flisoldf/">http://code.google.com/p/flisoldf/</a> e contamos com a sua colaboração para ajudar no projeto
+	seja codificando, reportando bugs ou sugerindo melhorias.<br />
+	</p>
+	<p>
+	<b>Funcionalidades que já foram concluidas:</b>
+	<ul>
+		<li>Cadastro de participantes/palestrantes</li>
+		<li>Submissão de atividades</li>
+		<li>Aprovação de atividades</li>
+		<li>Inscrição nas atividades</li>
+	</ul>
+	</p>
+	</div>
+	
+</div>
+
+<div class="w30" style="padding-left:50px;">
+<br />
+<h2>Faça seu cadastro no sistema</h2>
+	<form name="formulario" id="cadastro" method="post" action="<?php echo $this->baseUrl(); ?>/participantes/cadastrar">
+		<fieldset><legend>Login</legend>
+
+			<p>CPF:<br />
+				<input type="text" id="cpf" name="cpf" style="width:110px;" />
+			</p>		
+		
+			<p>Nome: *<br />
+				<input type="text" class="required" name="nome" />
+			</p>
+			
+			<p>E-mail: *<br />
+				<input type="text" class="required email" name="email" />
+			</p>
+			
+			<p>Senha: *<br />
+				<input type="password" id="senha" class="required" name="senha" />
+			</p>
+			
+			<p>Confirme a senha: *<br />
+				<input type="password" class="required" name="senha2" />
+			</p>
+			
+			<p>Cidade:<br />
+				<input type="text" name="cidade" />
+			</p>
+
+			<p>UF:<br />
+			<?php echo $this->formSelect('uf_id', null, null, $this->ufs); ?>
+			</p>
+						
+			<p>CEP:<br />
+				<input type="text" id="cep" name="cep" style="width:80px;" />
+			</p>
+
+
+			<p>Site/Blog:<br />
+				<input type="text" name="site" value="http://" />
+			</p>
+			
+			<p><input type="submit" value="Cadastrar" /></p>
+			
+		</fieldset>
+	</form>
+</div>
+<script type="text/javascript">
+$(function(){
+
+
+	$("#cep").mask("99999-999");
+	$("#cpf").mask("999.999.999-99");
+
+
+	$("#cadastro").validate({
+		ignoreTitle: true,
+		rules:{
+		    senha: "required",
+		    senha2:{
+		    	equalTo: "#senha"
+		    }
+		}
+	});
+});
+</script>

@@ -1,0 +1,49 @@
+<ul id="menu">
+	<li>
+		<a href="javascript:history.back();">Voltar</a>
+	</li>
+	<hr />
+</ul>
+<div style="padding-left:20px;">
+<br />
+<h2>Submeta sua atividade</h2>
+	<form name="formulario" method="post" action="<?php echo $this->baseUrl(); ?>/atividades/gravar">
+		<input type="hidden" name="id" value="<?php echo $this->row->id; ?>" />
+		<fieldset><legend>Atividade</legend>
+			<p>Responsável: <span><strong><?php echo $this->nomeUsuario; ?></strong></span>
+			</p>
+			<p>Nome da atividade: *<br />
+				<input type="text" class="required" name="nome" value="<?php echo $this->row->nome; ?>" />
+			</p>
+			
+			<p>Descrição da atividade: *<br />
+				<textarea class="required" name="descricao" rows="5" cols="50" ><?php echo $this->row->descricao; ?></textarea>
+			</p>
+			
+			<p>Quantidade de horas: *<br />
+				<input type="text" id="qt_horas" class="required" name="qt_horas" size="6" value="<?php echo $this->row->qt_horas; ?>" style="width:40px;" />
+			</p>
+<?php if(Zend_Auth::getInstance()->getIdentity()->sRole == 'admin') { ?>
+			<p>Sala: *<br />
+				<?php echo $this->formSelect('id_sala', $this->row->id_sala, array('class' => 'required'), $this->salas); ?>
+			</p>
+			<p>Situação: *<br />
+				<?php echo $this->formSelect('situacao', $this->row->situacao, array('class' => 'required'), $this->situacao); ?>
+			</p>
+<?php } ?>
+			<p><input type="submit" value="Submeter" /></p>
+		</fieldset>
+	</form>
+</div>
+<script type="text/javascript">
+$(function(){
+
+	//mascara
+	$("#qt_horas").mask("99:99");
+
+	//validação
+	$("form").validate({
+		ignoreTitle: true,
+	});
+});
+</script>

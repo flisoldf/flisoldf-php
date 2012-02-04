@@ -1,0 +1,366 @@
+/*
+ * Autor: Daniel Maffioletti
+ * Email: dmaffioletti@gmail.com
+ * Fone: (61) 9151-4622 
+ * 
+ * */
+
+body{
+    padding-top:14px;
+    background:#000 url("../imgs/bg.jpg") repeat-x;
+    margin:0px;
+}
+
+table
+{
+	margin-botton:30px;
+}
+th{
+	background:#F60;
+	color:#000;
+	font-size:16px;
+	font-weight:bold;
+}
+
+/*
+Desc: Todas as divs terão fontes com arial
+*/
+div{
+    font-family:Arial;
+    font-size:12px
+}
+/*
+Desc: define a cor de todos os links
+*/
+a{
+    color:#F60;
+    text-decoration:none;
+}
+/*
+Desc: troca a cor quando o mouse passa por cima de qualquer link
+*/
+a:hover{
+    color:#FC0;
+    text-decoration:underline;
+}
+
+input[type=submit]{
+    background: #F60;
+    padding:3px;
+    color:#FFF;
+    border:0px;
+}
+input[type=submit]:hover{
+    background: #FC0;
+    padding:3px;
+    color:#333;
+    border:0px;
+    cursor:pointer;
+}
+input[type=text]{
+    width:99%;
+    background: #FFF;
+    padding:3px;
+    color:#666;
+    border:#DFDFDF solid 1px;
+}
+input[type=password]{
+    width:99%;
+    background: #FFF;
+    padding:3px;
+    color:#666;
+    border:#DFDFDF solid 1px;
+}
+form fieldset{
+    border:#FFF solid 1px;
+}
+form fieldset legend{
+    text-indent:-5000px;
+}
+select{
+    background: #FFF;
+    padding:3px;
+    color:#666;
+    border:#DFDFDF solid 1px;
+}
+textarea{
+    width:100%;
+    background: #FFF;
+    padding:3px;
+    color:#666;
+    border:#DFDFDF solid 1px;
+}
+
+
+/*
+===========================================================================
+	SELETORES POR ID
+===========================================================================
+*/
+
+
+div#menu_area{
+	padding:10px;
+	margin-bottom:20px;
+}
+
+div#total{
+	float:right;
+	background:#FF9999;
+	margin-right:10px;
+	padding:5px;
+}
+
+/*
+id  : wrapper
+Desc: Centraliza a div wrapper no centro da página.
+*/
+div#wrapper{
+    width:990px;
+    border:#F00 solid 0px;
+    background-color:#FFF;
+    margin:0 auto;
+}
+
+/*
+id  : header
+Desc: posiciona a logomarca e os menus de navegação!
+*/
+div#wrapper div#header{
+    border:#00F solid 0px;
+    background:url("../imgs/bg-header.jpg") no-repeat;
+    height:104px;
+}
+
+/*
+tag  : h1
+Desc: Carrega a imagem/logomarca no fundo do h1 e remove o texto[FLISOL]
+*/
+div#wrapper div#header h1{
+    border:#FF0 solid 0px;
+    background:url("../imgs/logo-flisol.png") no-repeat;
+    margin:0px;
+    float:left;
+    width:160px;
+    height:80px;
+    text-indent: -500px;
+}
+
+/*
+tag  : ul
+Desc: posiciona o menu do sistema a direita da div header
+*/
+div#wrapper div#header ul#menu{
+    border:#FF0 solid 0px;
+    margin:25px 0px 0px 0px;
+    float:right;
+    width:75%;
+}
+
+/*
+tag  : li
+Desc: lista os itens do menu a direita
+*/
+div#wrapper div#header ul#menu li{
+    border:#FF0 solid 0px;
+    padding:5px 20px 0px 0px;
+    float:right;
+    list-style:none;
+}
+
+/*
+tag  : a
+Desc: define cor vermelho para os textos dentro da tag a
+*/
+div#wrapper div#header ul#menu li a{
+    color:#F00;
+    text-decoration:none;
+}
+
+/*
+tag  : a-hover
+Desc: troca a cor e ativa o sublinhado do texto dentro da tag a quando o mouse está em cima
+*/
+div#wrapper div#header ul#menu li a:hover{
+    color:#FC0;
+    text-decoration:underline;
+}
+
+
+
+/*
+tag  : ul
+Desc: formata qualquer link filhos da ul li na div content
+*/
+div#wrapper div#content ul#menu{
+    border:#DFDFDF solid 0px;
+    margin:10px 0px 0px 0px;
+	padding:10px 5px 1px 5px;
+}
+
+/*
+tag  : li
+Desc: lista os itens do menu a direita
+*/
+div#wrapper div#content ul#menu li{
+    border:#FF6 solid 1px;
+    padding:5px 5px 5px 5px;
+	margin-left:3px;
+    float:left;
+    list-style:none;
+	background:#FFC;
+}
+
+/*
+tag  : a
+Desc: define cor vermelho para os textos dentro da tag a
+*/
+div#wrapper div#content ul#menu li a{
+    color:#F00;
+    text-decoration:none;
+}
+
+/*
+tag  : a-hover
+Desc: troca a cor e ativa o sublinhado do texto dentro da tag a quando o mouse está em cima
+*/
+div#wrapper div#content ul#menu li a:hover{
+    color:#FC0;
+    text-decoration:underline;
+}
+
+
+
+/*
+id  : content
+Desc: área principal, local dos formulários
+*/
+div#wrapper div#content{
+    background:url("../imgs/bg-content.jpg") no-repeat;
+    padding:5px;
+    height:auto;
+}
+
+/*
+id  : h2
+Desc: área principal, local dos formulários
+*/
+div#wrapper div#content h1, h2, h3, h4, h5{
+    margin:0px;
+    color:#F60;
+}
+
+/*
+tag  : hr (linha)
+Desc: área principal, local dos formulários
+*/
+div#wrapper div#content hr{
+    clear:both;
+    border:#fff solid 1px;
+}
+
+/*
+id  : footer
+Desc: 
+*/
+div#wrapper div#footer{
+    background:url("../imgs/bg-footer.jpg") repeat-x;
+    height:50px;
+    padding: 30px 10px;
+    margin:0px 0px 30px 0px;
+}
+
+/*
+tag  : p
+Desc: Imagem das tecnologias utilizados
+*/
+div#wrapper div#footer p#poweredby {
+    padding: 0px;
+    float:left;
+}
+
+/*
+tag  : p
+Desc: Informações, créditos
+*/
+div#wrapper div#footer p#info {
+    padding: 5px 0px;
+    float:right;
+    text-align:right;
+    font-size:10px;
+    color:#FFF;
+}
+
+
+/*
+===========================================================================
+	SELETORES POR CLASSE
+===========================================================================
+*/
+
+div.w50{
+    width:47%;
+    float:left;
+    padding:3px;
+    margin-right:3px;
+    border:#E6E6E6 solid 0px;
+}
+
+div.w30{
+    width:32%;
+    float:left;
+    padding:3px;
+    margin-right:3px;
+    border:#E6E6E6 solid 0px;
+}
+
+/*
+===========================================================================
+	INSCRIÇÃO
+===========================================================================
+*/
+
+
+.clear{
+    clear:both;
+}
+.atividades{
+    float:left;
+}
+.lista_atividade{
+    background: #FFF;
+    padding:3px;
+    margin: 2px;
+    border: 1px solid #f60;
+    width: 200px;
+    cursor: pointer;
+
+}
+.titulo_atividade{
+    font-size: 16px;
+
+}
+.titulo_atividade span{
+    font-size: 14px;
+
+}
+.float_info{
+    float: left;
+    /*border:1px solid #f60;*/
+    width: 450px;
+    padding: 3px;
+    display:none;
+}
+.small_info{
+    float: right;
+	width:440px;
+    height: 60px;
+	background:#EEE;
+	padding:5px;
+	border:#CCC solid 1px;
+}
+.descricao_info{
+    float: left;
+    width: 100%;
+	margin-top: 15px;
+}

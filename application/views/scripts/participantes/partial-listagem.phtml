@@ -1,0 +1,70 @@
+<script type="text/javascript" language="javascript">
+	$(document).ready(function(){
+		$('#btnSalvarPresenca').click(function(){
+
+			var totalCheckados	= $('input:checked').length;
+
+			if(totalCheckados == 0)
+			{
+				return false;
+			}
+			
+			var pars	= $('#frmListaParticipante').serialize();
+
+			$.post(baseUrl+'/administrador/marcar-presenca', pars, function(resposta){
+				alert(resposta);
+			});
+			
+		});
+	});
+</script>
+<form name="frmListaParticipante" id="frmListaParticipante" method="post" action="javascript:return false;">
+	<table border="0" align="center" width="95%" cellspacing="2" cellpadding="5">
+		<thead>
+			<tr>
+				<?php if(Zend_Auth::getInstance()->getIdentity()->sRole == 'admin'){?>
+					<th align="left">Presença</th>
+				<?php }?>
+				<th align="left">Nome</th>
+				<th align="center">E-mail</th>
+			</tr>
+		</thead>
+		
+		<?php 
+		$participantes	= $this->participantes;
+		if($participantes->count() > 0){
+			foreach($participantes as $participante) {
+				$checked = false;
+				if(is_array($this->participantesPresentes) ){
+					if(in_array($participante->id,$this->participantesPresentes)){
+						$checked	= true;
+					}
+				}
+				
+			?>
+			    <tr>
+			    	<?php if(Zend_Auth::getInstance()->getIdentity()->sRole == 'admin'){?>
+						<td>
+							<?php echo $this->formCheckbox('usuario[]',$participante->id,array('id'	=>'usuario[]','checked'=>$checked ));?>
+					 	</td>
+			 		<?php }?>
+					<td><?php echo $participante->nome;?></td>
+					<td><?php echo $participante->email; ?></td>
+				</tr>
+			<?php } 
+			
+		}else{?>
+			<tr>
+				<td colspan="3">Nenhum participante inscrito</td>
+			</tr>
+		<?php }?>
+		<tr>
+			<td colspan="3">
+				<input type="hidden" name="id_atividade" id="id_atividade" value="<?php echo $this->id_atividade; ?>" />
+				<?php if(Zend_Auth::getInstance()->getIdentity()->sRole == 'admin'){?>
+					<input type="button" name="btnSalvarPresenca" id="btnSalvarPresenca" value="Salvar Presença" />
+				<?php }?>
+			</td>
+		</tr>
+	</table>
+</form>

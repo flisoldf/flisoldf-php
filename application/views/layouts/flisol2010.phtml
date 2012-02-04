@@ -1,0 +1,115 @@
+<!-- 
+Autor: Daniel Maffioletti (dmaffioletti@gmail.com)
+Implementa��o: Cristiano Teles (cristianoteles@gmail.com)
+ -->
+<?php $baseUrl = $this->baseUrl(); ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>FLISOL 2010 - Sistema de inscrições</title>
+        
+        <link rel="shortcut icon" href="<?php echo $baseUrl ?>/img/icone/" type="image/x-icon"/>
+        <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8"/>
+        
+        <!--  Estilos -->
+		<?php echo $this->headLink()->appendStylesheet( $baseUrl . '/css/flisol2010.css') ?>
+		<?php echo $this->headLink()->appendStylesheet( $baseUrl . '/css/messages.css') ?>
+        
+        <!-- jquery -->
+        <script type="text/javascript" src="<?php echo $baseUrl ?>/js/jquery-1.4.2.min.js"></script>
+        <script type="text/javascript" src="<?php echo $baseUrl ?>/js/jquery.validate.pack.js"></script>
+        <script type="text/javascript" src="<?php echo $baseUrl ?>/js/messages_ptbr.js"></script>
+        <script type="text/javascript" src="<?php echo $baseUrl ?>/js/jquery.maskedinput.js"></script>
+        <script type="text/javascript" src="<?php echo $baseUrl ?>/js/ckeditor/ckeditor.js"></script>
+        <script type="text/javascript" src="<?php echo $baseUrl ?>/js/ckeditor/adapters/jquery.js"></script>
+        
+        
+        <script type="text/javascript">
+	        var baseUrl = '<?php echo $baseUrl; ?>';
+	    </script>
+	    
+    </head>
+    <body>
+		<div id="wrapper">
+			<div id="header">
+				<a href="<?php echo $baseUrl; ?>/index"><h1>FLISOL</h1></a>
+				<ul id="menu">
+				<?php
+				    if(Zend_Auth::getInstance()->hasIdentity()) 
+				    { 
+				    ?>
+					    <li><a href="<?php echo $baseUrl; ?>/participantes/logout">LOGOUT</a></li>
+					    <li><a href="<?php echo $baseUrl; ?>/atividades">ATIVIDADES</a></li>
+					    <li><a href="<?php echo $baseUrl; ?>/participantes">PAINEL</a></li>
+				    <?php
+				    	if(Zend_Auth::getInstance()->getIdentity()->sRole == 'admin')
+				    	{
+				    	?>
+						    <li><a href="<?php echo $baseUrl; ?>/administrador/email">E-MAIL</a></li>
+				    	<?php 	
+				    	}
+				    } 
+				    else 
+				    { 
+				    ?>
+						<li><a href="<?php echo $baseUrl; ?>/participantes/login">LOGIN</a></li>
+				    <?php 
+				    } 
+					/*
+					<li><a href="<?php //echo $baseUrl; ?>/configuracoes">CONFIGURAÇÕES</a></li>
+					<li><a href="<?php //echo $baseUrl; ?>/palestrantes">PALESTRANTES</a></li>
+					<li><a href="<?php //echo $baseUrl; ?>/inscricoes">INSCRIÇÕES</a></li>
+					<li><a href="<?php //echo $baseUrl; ?>/atividades">ATIVIDADES</a></li>
+					*/
+					?>
+				</ul>
+			</div>
+			<div id="content">
+		    <?php
+	        $messages = (array) $this->messages;
+	        if (count($messages)) : ?>
+	            <div class="info">
+	                <?php foreach( $messages as $mensage) {
+	                    echo '<br>' . $mensage;
+	                } ?>
+	        <?php 
+	        else : ?>
+	            <div id="divErrors" style="display:none;">
+	        <?php endif; ?>
+                 </div>
+                <?php echo $this->layout()->content ?>
+                
+                <!--
+                Não remova a tag <hr /> abaixo. 
+                Tem a finalidade de esticar a div content.
+                Está definido como clear:both
+                Sempre fica abaixo de qualquer elemento com tenha float:left || right
+                -->
+                <hr />
+                
+        	</div>
+			<div id="footer">
+				<p id="poweredby">
+					<img src="<?php echo $baseUrl; ?>/imgs/footer-poweredby.png" border="0" />
+				</p>
+				
+				<p id="info">
+					<strong>DESENVOLVIMENTO</strong><br />
+					Associação Candangos de Software Livre (ACSL-DF)<br />
+					Comunidade PHPDF
+				</p>
+			</div>
+        </div>
+<?php if(APPLICATION_ENV == 'production') :?>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12171024-2");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<?php endif; ?>
+    </body>
+</html>
